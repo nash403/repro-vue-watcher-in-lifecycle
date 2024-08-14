@@ -19,12 +19,12 @@ const initWatcher = () => {
 }
 
 onMounted(async () => {
-  console.log('onMounted hook called')
+  console.log('onMounted hook called in CompA')
   await Promise.resolve(0)
   initWatcher()
 })
 
 onUnmounted(() => {
-  console.log('onUnmounted hook called')
+  console.log('onUnmounted hook called in CompA')
 })
 </script>
