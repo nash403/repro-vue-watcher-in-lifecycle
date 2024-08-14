@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch } from 'vue';
 import { count } from '../shared'
 
 const initWatcher = () => {
@@ -20,7 +20,8 @@ const initWatcher = () => {
 
 onMounted(async () => {
   console.log('onMounted hook called in CompA')
-  await Promise.resolve(0)
+  await Promise.resolve(0) // this creates the zombie watcher
+  // since we are outside the setup scope, Vue can't attach autmatically the vue instance to the watcher
   initWatcher()
 })
 
